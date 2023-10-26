@@ -42,3 +42,4 @@ tRegistroProductos leerRegistro(FILE * pArchivo) {
 void cerrarArchivo(FILE * pArchivo) {
 	fclose(pArchivo);
 }
+
