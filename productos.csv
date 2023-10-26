@@ -1,0 +1,21 @@
+id,nombre,rubro,costo,venta
+1,Android A05 16G,Celulares,200,350
+2,iPhone 12,Celulares,700,999
+3,PlayStation 5,Consolas,500,599
+4,Xbox Series X,Consolas,520,599
+5,Laptop HP,Computadoras Portatiles,600,799
+6,Tablet Samsung,Celulares,150,249
+7,"Smart TV 55",Electronicos,400,549
+8,Reproductor de Blu-ray,Electronicos,80,99
+9,Auriculares inalambricos,Accesorios,50,79
+10,Mouse inalambrico,Accesorios,20,29
+11,Camara digital Canon,Camaras,250,399
+12,Impresora HP,Impresoras,100,149
+13,Monitor Dell,Monitores,120,199
+14,Altavoz Bluetooth,Altavoces,30,49
+15,Teclado mecanico,Accesorios,40,69
+16,Grabadora de voz,Sonido,25,39
+17,Aire acondicionado,Electronicos,350,499
+18,Horno de microondas,Electronicos,80,119
+19,Lavadora Samsung,Electronicos,300,449
+20,Robot aspirador,Electronicos,150,199
