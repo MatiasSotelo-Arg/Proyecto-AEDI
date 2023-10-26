@@ -14,18 +14,18 @@ typedef struct productos {
 
 tRegistroProductos rProducto;
 
-int abrirArchivo(FILE **, tString, tChar);
+FILE * abrirArchivo(tString, tChar);
 tRegistroProductos leerRegistro(FILE *);
 void cerrarArchivo(FILE *);
 
-int abrirArchivo(FILE ** pArchivo, tString pNombreArchivo, tChar pModo ) {
-	*pArchivo = fopen(pNombreArchivo,pModo);
-	
-	if(pArchivo != NULL) {
-		return 1; 
-	} else {
-		return 0;
-	}
+FILE *abrirArchivo(tString pNombreArchivo, tChar pModo) {
+    FILE *archivo = fopen(pNombreArchivo, pModo);
+    
+    if (archivo != NULL) {
+        return archivo;
+    } else {
+        return NULL;
+    }
 }
 
 tRegistroProductos leerRegistro(FILE * pArchivo) {
