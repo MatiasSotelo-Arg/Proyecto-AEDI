@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "archivo.h"
+#include "librerias\archivos.h"
 
 int main() {
 	

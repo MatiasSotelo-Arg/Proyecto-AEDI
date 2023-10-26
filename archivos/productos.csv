@@ -1,4 +1,4 @@
-id,nombre,rubro,costo,venta
+id,nombre,rubro,precioCosto,precioVenta
 1,Android A05 16G,Celulares,200,350
 2,iPhone 12,Celulares,700,999
 3,PlayStation 5,Consolas,500,599
