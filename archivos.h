@@ -14,4 +14,6 @@ int abrirArchivo(FILE * pArchivo, tString pNombreArchivo, tChar pModo ) {
 	}
 }
 
-void cerrarArchivo(FILE *)
+void cerrarArchivo(FILE * pArchivo) {
+	fclose(pArchivo);
+}
