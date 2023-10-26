@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 typedef char tString[10];
+typedef char tStringNombreArchivo[20];
 typedef char tChar[2];
 
 typedef struct productos {
@@ -14,12 +15,15 @@ typedef struct productos {
 
 tRegistroProductos rProducto;
 
-FILE * abrirArchivo(tString, tChar);
+FILE * archivo;
+
+//prototipo de funciones
+FILE * abrirArchivo(tStringNombreArchivo, tChar);
 tRegistroProductos leerRegistro(FILE *);
 void cerrarArchivo(FILE *);
 
-FILE *abrirArchivo(tString pNombreArchivo, tChar pModo) {
-    FILE *archivo = fopen(pNombreArchivo, pModo);
+FILE * abrirArchivo(tStringNombreArchivo pNombreArchivo, tChar pModo) {
+     archivo = fopen(pNombreArchivo, pModo);
     
     if (archivo != NULL) {
         return archivo;
@@ -29,8 +33,8 @@ FILE *abrirArchivo(tString pNombreArchivo, tChar pModo) {
 }
 
 tRegistroProductos leerRegistro(FILE * pArchivo) {
-
-	fscanf(pArchivo, "%d %s %s %f %f", &rProducto.id, &rProducto.nombre, &rProducto.rubro, &rProducto.precioCosto, &rProducto.precioVenta);
+	
+	fread(&rProducto,sizeof(rProducto),1,pArchivo);
 	
 	return rProducto;
 }
