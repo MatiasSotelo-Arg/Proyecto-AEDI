@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 typedef char tString[10];
 typedef char tChar[2];
 
@@ -9,14 +12,14 @@ typedef struct productos {
 	float precioVenta;
 }tRegistroProductos; 
 
-tRegistroProducto rProducto;
+tRegistroProductos rProducto;
 
 int abrirArchivo(FILE **, tString, tChar);
 tRegistroProductos leerRegistro(FILE *);
 void cerrarArchivo(FILE *);
 
-int abrirArchivo(FILE * pArchivo, tString pNombreArchivo, tChar pModo ) {
-	pArchivo = fopen(pNombreArchivo,pModo);
+int abrirArchivo(FILE ** pArchivo, tString pNombreArchivo, tChar pModo ) {
+	*pArchivo = fopen(pNombreArchivo,pModo);
 	
 	if(pArchivo != NULL) {
 		return 1; 
@@ -26,7 +29,7 @@ int abrirArchivo(FILE * pArchivo, tString pNombreArchivo, tChar pModo ) {
 }
 
 tRegistroProductos leerRegistro(FILE * pArchivo) {
-/
+
 	fscanf(pArchivo, "%d %s %s %f %f", &rProducto.id, &rProducto.nombre, &rProducto.rubro, &rProducto.precioCosto, &rProducto.precioVenta);
 	
 	return rProducto;
