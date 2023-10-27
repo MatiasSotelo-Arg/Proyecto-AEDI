@@ -5,18 +5,19 @@
 
 #include "archivos.h"
 
+//estructura
 typedef struct nodo {
-	tRegistroProduto producto;
+	tRegistroProductos producto;
 	struct nodo * siguiente;
 } tNodoCarrito;
 
-tNodoCarrito productoCarrito;
+tNodoCarrito * productoCarrito;
 
 //prototipos 
 void inicializarCarrito();
-bool carritoVacio(tNodoCarrito);
+bool carritoVacio(tNodoCarrito *);
 
-void agregarProducto(tRegistroProducto,int);
+void agregarProducto(tRegistroProductos,int);
 
 int cantidadNodos(tNodoCarrito);
 void eliminarProductoK(int);
@@ -29,13 +30,13 @@ void inicializarCarrito() {
 	productoCarrito = NULL; 
 }
 
-bool carritoVacio(tNodoCarrito pCarrito) {
+bool carritoVacio(tNodoCarrito * pCarrito) {
 	return (pCarrito == NULL);
 } 
 
-void agregarProducto(tRegistroProducto, int) {
-	
-}
+//void agregarProducto(tRegistroProductos, int) {
+//	
+//}
 
 
 
