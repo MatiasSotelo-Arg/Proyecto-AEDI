@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "estructura.h"
-#include "archivos.h"
 
 //prototipos
 int obtenerUltIndice();
@@ -12,7 +11,7 @@ void actualizarUltIndice(int pIndex);
 int obtenerUltIndice(){
 	FILE * archivoIndice;
 	archivoIndice = abrirArchivo("archivos/ultIndice.txt" , "r");
-	validarAperturaArchivo(archivoIndice, "ultIndice");
+//	validarAperturaArchivo(archivoIndice, "ultIndice");
 	
 	int ultIndex = 0;
 	char registroAux[3];
@@ -29,7 +28,7 @@ int obtenerUltIndice(){
 void actualizarUltIndice(int pIndex) {
 	FILE * archivoIndice;
 	archivoIndice = abrirArchivo("archivos/ultIndice.txt" , "w");
-	validarAperturaArchivo(archivoIndice, "ultIndice");
+//	validarAperturaArchivo(archivoIndice, "ultIndice");
 	
 	char cadena[3];
 	sprintf(cadena, "%d", pIndex);

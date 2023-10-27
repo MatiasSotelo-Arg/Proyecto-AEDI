@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "indice.h"
 #include "estructura.h"
+
 
 tRegistroProductos rProducto;
 

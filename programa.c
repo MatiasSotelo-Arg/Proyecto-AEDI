@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <string.h>
-#include "librerias/archivos.h"
+
+#include "librerias/estructura.h"  
+#include "librerias/archivos.h"       
 #include "librerias/indice.h"
-#include "librerias/estructura.h"
+
 
 //prototipos de funciones
 void mostrarProductos();
-void validarAperturaArchivo(FILE *,tString);
+//void validarAperturaArchivo(FILE *,tString);
 void ingDatosProducto();
 void agregarNuevoProducto();
 
@@ -28,21 +30,21 @@ int main() {
     return 0;
 }
 
-void validarAperturaArchivo( FILE * pArchivo, tString pNombre) {
-	if(pArchivo != NULL){
-		printf("\nArchivo %s Abierto.\n",pNombre);
-	}
-	else{
-		printf("\nError.\n");
-		cerrarArchivo(pArchivo);
-		printf("\nArchivo %s Cerrado.\n",pNombre);
-	}
-}
+//void validarAperturaArchivo( FILE * pArchivo, tString pNombre) {
+//	if(pArchivo != NULL){
+//		printf("\nArchivo %s Abierto.\n",pNombre);
+//	}
+//	else{
+//		printf("\nError.\n");
+//		cerrarArchivo(pArchivo);
+//		printf("\nArchivo %s Cerrado.\n",pNombre);
+//	}
+//}
 
 
 void mostrarProductos(){
 	archivoProductos = abrirArchivo("archivos/productos.dat", "rb");
-	validarAperturaArchivo(archivoProductos, "productos");
+//	validarAperturaArchivo(archivoProductos, "productos");
 	
 	tRegistroProductos registro;
 	printf("\nid\tnombre\t\t\trubro\t\tcosto\tventa\n");
@@ -86,7 +88,7 @@ void agregarNuevoProducto() {
 	int ultioIndice = obtenerUltIndice();
 	
 	archivoProductos = abrirArchivo("archivos/productos.dat","ab");
-	validarAperturaArchivo(archivoProductos, "productos");
+//	validarAperturaArchivo(archivoProductos, "productos");
 	
 	do {
 		ingDatosProducto();
