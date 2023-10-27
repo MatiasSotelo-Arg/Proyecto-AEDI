@@ -1,45 +1,48 @@
 #include <stdio.h>
 #include <string.h>
 #include "librerias/archivos.h"
+#include "librerias/indice.h"
+#include "librerias/estructura.h"
 
 //prototipos de funciones
 void mostrarProductos();
-void validarAperturaArchivo(FILE *);
+void validarAperturaArchivo(FILE *,tString);
 void ingDatosProducto();
 void agregarNuevoProducto();
-int actualizarUltIndice();
+
 
 FILE * archivoProductos;
 
 int main() {
 
 	//abrir y mostrar
-	
-//	archivoProductos = abrirArchivo("archivos/productos.dat", "rb");
-//	validarAperturaArchivo(archivoProductos);
 //	mostrarProductos();
-//	cerrarArchivo(archivoProductos);
-	
+
 	
 	//agregar nuevo producto
-	agregarNuevoProducto();	
+//	agregarNuevoProducto();	
+	
+	mostrarProductos();
+	
 	
     return 0;
 }
 
-void validarAperturaArchivo( FILE * pArchivo) {
+void validarAperturaArchivo( FILE * pArchivo, tString pNombre) {
 	if(pArchivo != NULL){
-		printf("\nArchivo Productos Abierto.\n");
+		printf("\nArchivo %s Abierto.\n",pNombre);
 	}
 	else{
 		printf("\nError.\n");
 		cerrarArchivo(pArchivo);
-		printf("\nArchivo Productos Cerrado.\n");
+		printf("\nArchivo %s Cerrado.\n",pNombre);
 	}
 }
 
 
 void mostrarProductos(){
+	archivoProductos = abrirArchivo("archivos/productos.dat", "rb");
+	validarAperturaArchivo(archivoProductos, "productos");
 	
 	tRegistroProductos registro;
 	printf("\nid\tnombre\t\t\trubro\t\tcosto\tventa\n");
@@ -49,22 +52,27 @@ void mostrarProductos(){
 		printf("%d\t%s\t%s\t%.2f\t%.2f\n", registro.id, registro.nombre, registro.rubro, registro.precioCosto, registro.precioVenta);	
 		registro = leerRegistro(archivoProductos);
 	}
+	
+	cerrarArchivo(archivoProductos);
 }
 
 void ingDatosProducto(){
+
 	printf("\nIngrese nuevo producto: ");
 	
-	rProducto.id = actualizarUltIndice();
+	rProducto.id = obtenerUltIndice();
 	
 	printf("Id %d",rProducto.id);
 	
 	printf("\nnombre: ");
 	fflush(stdin);
-	gets(rProducto.nombre);
+	fgets(rProducto.nombre, sizeof(rProducto.nombre), stdin);
+    
 	
 	printf("\nrubro: ");
 	fflush(stdin);
-	gets(rProducto.rubro);
+	fgets(rProducto.rubro, sizeof(rProducto.rubro), stdin);
+
 	
 	printf("\nprecio de costo: ");
 	scanf("%f",&rProducto.precioCosto);
@@ -75,9 +83,10 @@ void ingDatosProducto(){
 }
 void agregarNuevoProducto() {
 	char continuar; 
+	int ultioIndice = obtenerUltIndice();
 	
 	archivoProductos = abrirArchivo("archivos/productos.dat","ab");
-	validarAperturaArchivo(archivoProductos);
+	validarAperturaArchivo(archivoProductos, "productos");
 	
 	do {
 		ingDatosProducto();
@@ -87,29 +96,15 @@ void agregarNuevoProducto() {
 		scanf("%c",&continuar);
 		
 		fwrite(&rProducto,sizeof(rProducto), 1, archivoProductos);
+		
+		actualizarUltIndice(ultioIndice);
 	} while(continuar != 'n');
 	
 	cerrarArchivo(archivoProductos);
 	printf("\nArchivo Productos Cerrado.\n");
 }	
 
-int actualizarUltIndice(){
-	FILE * archivoIndice;
-	archivoIndice = abrirArchivo("archivos/ultIndice.txt" , "r");
-	validarAperturaArchivo(archivoIndice);
-	
-	int ultIndex = 0;
-	
-	char registroAux[3];
-	
-	fgets(registroAux, sizeof(registroAux), archivoIndice);
-	
-	ultIndex = atoi(registroAux);
-	
-	cerrarArchivo(archivoIndice);
-	
-	return ultIndex + 1;
-}
+
 
 	
 	

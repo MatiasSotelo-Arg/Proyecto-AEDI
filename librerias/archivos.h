@@ -1,17 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef char tString[10];
-typedef char tStringNombreArchivo[20];
-typedef char tChar[2];
-
-typedef struct productos {
-	int id;
-	tString nombre;
-	tString rubro;
-	float precioCosto;
-	float precioVenta;
-}tRegistroProductos; 
+#include "indice.h"
+#include "estructura.h"
 
 tRegistroProductos rProducto;
 
