@@ -3,40 +3,70 @@
 #include <stdbool.h>
 #include <string.h>
 
-#include "archivos.h"
-
 //estructura
 typedef struct nodo {
 	tRegistroProductos producto;
 	struct nodo * siguiente;
-} tNodoCarrito;
+} tListaCarrito;
 
-tNodoCarrito * productoCarrito;
+tListaCarrito * carrito;
 
-//prototipos 
+//prototipos
 void inicializarCarrito();
-bool carritoVacio(tNodoCarrito *);
 
-void agregarProducto(tRegistroProductos,int);
+bool carritoVacio(tListaCarrito *);
 
-int cantidadNodos(tNodoCarrito);
-void eliminarProductoK(int);
-void eliminarUltimoProducto();
+void agregarProducto(tRegistroProductos);
 
-void mostrarCarrito(tNodoCarrito);
+ 
+int cantidadNodos();
+//void eliminarProductoK(int);
+//void eliminarUltimoProducto();
+//
+//void mostrarCarrito(tListaCarrito);
 
 //implementacion
-void inicializarCarrito() {
-	productoCarrito = NULL; 
+
+void inicializarCarrito(tListaCarrito * pProductoCarrito) {
+	pProductoCarrito = NULL; 
 }
 
-bool carritoVacio(tNodoCarrito * pCarrito) {
+bool carritoVacio(tListaCarrito * pCarrito) {
 	return (pCarrito == NULL);
 } 
 
-//void agregarProducto(tRegistroProductos, int) {
-//	
-//}
+void agregarProducto(tRegistroProductos pProducto) {
+	
+	tListaCarrito * nuevoNodo;
+	
+	nuevoNodo = (tRegistroProductos *) malloc(sizeof(tRegistroProductos));
+	
+	nuevoNodo->producto = pProducto;
+	
+	if(carritoVacio(carrito)) {
+		nuevoNodo->siguiente = NULL;
+	} else {
+		nuevoNodo->siguiente = carrito;
+	}
+	
+	carrito = nuevoNodo;
+} 
+
+int cantidadNodos() {
+	tListaCarrito * aux;
+	int contador = 0;
+	
+	aux = carrito;
+	
+	if(!carritoVacio(carrito)) {
+		while(carrito != NULL) {
+			contador++;
+		 	aux = aux->siguiente;
+		}	
+	}
+	
+	return contador;
+}
 
 
 

@@ -4,6 +4,7 @@
 #include "librerias/estructura.h"  
 #include "librerias/archivos.h"       
 #include "librerias/indice.h"
+#include "librerias/listas.h"
 
 //prototipos de funciones
 void mostrarProductos();
@@ -11,19 +12,14 @@ void validarAperturaArchivo(FILE *,tString);
 void ingDatosProducto();
 void agregarNuevoProducto();
 
-
 FILE * archivoProductos;
 
 int main() {
-
-	//abrir y mostrar
-//	mostrarProductos();
 
 	
 	//agregar nuevo producto
 //	agregarNuevoProducto();	
 	
-	mostrarProductos();
 	
 	
     return 0;
